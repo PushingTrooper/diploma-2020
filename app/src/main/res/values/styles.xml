@@ -4,4 +4,20 @@
         <item name="colorControlNormal">@color/grid_grey</item>
         <item name="colorControlActivated">@color/yellow</item>
     </style>
+
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/textinput_background</item>
+        <item name="boxStrokeColor">@color/title_gold</item>
+        <item name="strokeColor">@color/title_gold</item>
+        <item name="android:strokeColor">@color/title_gold</item>
+        <item name="chipStrokeColor">@color/title_gold</item>
+        <item name="itemStrokeColor">@color/title_gold</item>
+        <item name="thumbStrokeColor">@color/title_gold</item>
+    </style>
+
+    <style name="MyTextInputLayout_overlay">
+        <item name="colorOnSurface">@android:color/transparent</item>
+        <item name="colorPrimary">@color/textinput_background</item>
+    </style>
+
 </resources>

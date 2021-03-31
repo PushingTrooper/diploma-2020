@@ -23,6 +23,10 @@ class MainApp : Application() {
         single { GalleryViewModel(get()) }
     }
 
+    private val loginModule = module {
+        viewModel { LoginViewModel(get()) }
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -31,7 +35,7 @@ class MainApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MainApp)
-            modules(listOf(homeModule(service), galleryModule(service)))
+            modules(listOf(homeModule(service), galleryModule(service), loginModule))
         }
     }
 }

@@ -32,10 +32,19 @@ class PlaceDetailsFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_place_details, container, false)
         val image: ImageView = root.findViewById(R.id.image)
         val type: TextView = root.findViewById(R.id.type)
-        val name: TextView = root.findViewById(R.id.name)
+        //val name: TextView = root.findViewById(R.id.name)
         val starts: RatingBar = root.findViewById(R.id.reviews)
         val address: TextView = root.findViewById(R.id.address)
-        val timeScheduleTextView: TextView = root.findViewById(R.id.time)
+        //val timeScheduleTextView: TextView = root.findViewById(R.id.time)
+
+        val monday: TextView = root.findViewById(R.id.monday)
+        val tuesday: TextView = root.findViewById(R.id.tuesday)
+        val wednesday: TextView = root.findViewById(R.id.wednesday)
+        val thursday: TextView = root.findViewById(R.id.thursday)
+        val friday: TextView = root.findViewById(R.id.friday)
+        val saturday: TextView = root.findViewById(R.id.saturday)
+        val sunday: TextView = root.findViewById(R.id.sunday)
+
         val place = args.place
 
         viewModel.getTimeSchedule(place.id)
@@ -54,16 +63,15 @@ class PlaceDetailsFragment : Fragment() {
             var timeSchedule: String = ""
             for(time in it.timeSchedule) {
                 when(Integer.parseInt(time.weekday)) {
-                    1 -> timeSchedule += getTimeString("E hënë", time)+"\n"
-                    2 -> timeSchedule += getTimeString("E martë", time)+"\n"
-                    3 -> timeSchedule += getTimeString("E mërkurë", time)+"\n"
-                    4 -> timeSchedule += getTimeString("E enjte", time)+"\n"
-                    5 -> timeSchedule += getTimeString("E premte", time)+"\n"
-                    6 -> timeSchedule += getTimeString("E shtunë", time)+"\n"
-                    7 -> timeSchedule += getTimeString("E dielë", time)
+                    1 -> monday.text = getTimeString("E hënë", time)
+                    2 -> tuesday.text = getTimeString("E martë", time)
+                    3 -> wednesday.text = getTimeString("E mërkurë", time)
+                    4 -> thursday.text = getTimeString("E enjte", time)
+                    5 -> friday.text = getTimeString("E premte", time)
+                    6 -> saturday.text = getTimeString("E shtunë", time)
+                    7 -> sunday.text = getTimeString("E dielë", time)
                 }
             }
-            timeScheduleTextView.text = timeSchedule
         })
 
         return root
@@ -71,9 +79,9 @@ class PlaceDetailsFragment : Fragment() {
 
     private fun getTimeString(day: String, time: TimeSchedule): String =
         if(time.startHour.isNullOrEmpty() || time.endHour.isNullOrEmpty()){
-            "$day: Mbyllur"
+            "Mbyllur"
         } else {
-            "$day: ${time.startHour} - ${time.endHour}"
+            "${time.startHour} - ${time.endHour}"
         }
 
 }

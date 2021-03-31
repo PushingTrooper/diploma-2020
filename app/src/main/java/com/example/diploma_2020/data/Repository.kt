@@ -18,6 +18,9 @@ class Repository(private val context: Context, private val service: DiplomaServi
     private val _timeSchedule = MutableLiveData<TimeScheduleResponse>()
     val timeSchedule: LiveData<TimeScheduleResponse> = _timeSchedule
 
+    private val _user = MutableLiveData<LoginResponse>()
+    val user: LiveData<LoginResponse> = _user
+
     fun getPlaces() {
         service.getPlaces().enqueue(object : Callback<PlacesResponse> {
             override fun onFailure(call: Call<PlacesResponse>, t: Throwable) {
@@ -70,6 +73,25 @@ class Repository(private val context: Context, private val service: DiplomaServi
                     _timeSchedule.value = response.body()
                 } else {
                     _timeSchedule.value = TimeScheduleResponse(listOf(), context.getString(R.string.there_is_a_problem_with_the_connection))
+                }
+            }
+        })
+    }
+
+    fun login(username: String, password: String) {
+        service.login(username, password).enqueue(object : Callback<LoginResponse> {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _user.value = LoginResponse("", "")
+            }
+
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _user.value = response.body()
+                } else {
+                    _user.value = LoginResponse("", "")
                 }
             }
         })

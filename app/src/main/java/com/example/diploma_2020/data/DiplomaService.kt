@@ -13,4 +13,7 @@ interface DiplomaService {
 
     @GET("/getTimeSchedule.php")
     fun getTimeSchedule(@Query("id") placeId: String): Call<TimeScheduleResponse>
+
+    @GET("/login.php")
+    fun login(@Query("email") email: String, @Query("password") password: String): Call<LoginResponse>
 }
