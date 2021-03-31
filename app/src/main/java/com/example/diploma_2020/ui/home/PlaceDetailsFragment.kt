@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.diploma_2020.MainActivity
 import com.example.diploma_2020.R
 import com.example.diploma_2020.data.TimeSchedule
 import com.example.diploma_2020.helpers.BASE_URL
@@ -43,7 +44,8 @@ class PlaceDetailsFragment : Fragment() {
             .load("$BASE_URL${place.imageUrl}")
             .into(image)
 
-        name.text = place.name
+        //name.text = place.name
+        (activity as MainActivity).supportActionBar?.title = place.name
         type.text = place.type
         starts.rating = (place.rating.toDouble()/10).toFloat()
         address.text = place.address
