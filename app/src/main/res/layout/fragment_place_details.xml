@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/eatalians" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/type"
-        tools:text="Eatalian's" />
+        tools:text="Eatalian's" />-->
 
     <TextView
         android:id="@+id/type"
