@@ -46,4 +46,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="name">Emri</string>
+    <string name="number_of_people">Numri i njerëzve</string>
+    <string name="date">Data</string>
 </resources>

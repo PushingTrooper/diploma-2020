@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diploma_2020">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.Diploma_2020.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

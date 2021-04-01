@@ -20,4 +20,10 @@
         <item name="colorPrimary">@color/textinput_background</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">#2E78F0</item>
+        <item name="android:calendarTextColor">@android:color/white</item>
+    </style>
+
+
 </resources>
