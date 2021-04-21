@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layout"
     android:layout_margin="5dp"
-    android:background="@drawable/background_places">
+    android:background="@android:color/transparent">
 
     <ImageView
         android:id="@+id/image"
@@ -26,9 +26,9 @@
         android:drawablePadding="8dp"
         android:textColor="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/type"
         tools:text="Eatalian's" />
 
     <TextView
@@ -41,10 +41,10 @@
         android:drawablePadding="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/image"
         app:layout_constraintEnd_toStartOf="@id/reviews"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/image"
         tools:text="Erion Shaga" />
 
     <RatingBar
@@ -56,7 +56,7 @@
         android:numStars="5"
         android:rating="1"
         android:theme="@style/RatingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/image"/>
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

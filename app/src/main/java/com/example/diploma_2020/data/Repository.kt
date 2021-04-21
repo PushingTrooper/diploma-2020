@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.diploma_2020.R
+import com.example.diploma_2020.helpers.GenericResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,9 +18,6 @@ class Repository(private val context: Context, private val service: DiplomaServi
 
     private val _timeSchedule = MutableLiveData<TimeScheduleResponse>()
     val timeSchedule: LiveData<TimeScheduleResponse> = _timeSchedule
-
-    private val _user = MutableLiveData<LoginResponse>()
-    val user: LiveData<LoginResponse> = _user
 
     fun getPlaces() {
         service.getPlaces().enqueue(object : Callback<PlacesResponse> {
@@ -78,22 +76,5 @@ class Repository(private val context: Context, private val service: DiplomaServi
         })
     }
 
-    fun login(username: String, password: String) {
-        service.login(username, password).enqueue(object : Callback<LoginResponse> {
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                _user.value = LoginResponse("", "")
-            }
-
-            override fun onResponse(
-                call: Call<LoginResponse>,
-                response: Response<LoginResponse>
-            ) {
-                if (response.isSuccessful) {
-                    _user.value = response.body()
-                } else {
-                    _user.value = LoginResponse("", "")
-                }
-            }
-        })
-    }
+    fun login(username: String, password: String) = service.login(username, password)
 }

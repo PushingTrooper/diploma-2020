@@ -1,5 +1,7 @@
 package com.example.diploma_2020.data
 
+import com.example.diploma_2020.helpers.GenericResponse
+import com.example.diploma_2020.helpers.NetworkResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
