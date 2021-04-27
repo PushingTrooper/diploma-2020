@@ -49,4 +49,5 @@
     <string name="name">Emri</string>
     <string name="number_of_people">Numri i njerëzve</string>
     <string name="date">Data</string>
+    <string name="search">Kërko...</string>
 </resources>

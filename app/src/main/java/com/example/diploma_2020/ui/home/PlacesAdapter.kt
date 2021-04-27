@@ -22,6 +22,8 @@ class PlacesAdapter(
 ) :
     RecyclerView.Adapter<PlacesAdapter.ViewHolder>() {
 
+    private val placesShown: MutableList<Place> = places.toMutableList()
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.image)
         val type: TextView = view.findViewById(R.id.type)
@@ -31,7 +33,26 @@ class PlacesAdapter(
         val layout: ConstraintLayout = view.findViewById(R.id.layout)
     }
 
-    override fun getItemCount(): Int = places.size
+    fun searchPlaces(searchText: String) {
+        val tempList = mutableListOf<Place>()
+
+        if (searchText.isNotEmpty()) {
+            places.forEach { place ->
+                if (place.name.toLowerCase().contains(searchText.toLowerCase())) {
+                    tempList.add(place)
+                }
+            }
+            placesShown.clear()
+            placesShown.addAll(tempList)
+        } else {
+            placesShown.clear()
+            placesShown.addAll(places)
+        }
+
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int = placesShown.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -42,15 +63,15 @@ class PlacesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context)
-            .load("$BASE_URL${places[position].imageUrl}")
+            .load("$BASE_URL${placesShown[position].imageUrl}")
             .into(holder.image)
 
-        holder.name.text = places[position].name
-        holder.type.text = places[position].type
-        holder.starts.rating = (places[position].rating.toDouble()/10).toFloat()
+        holder.name.text = placesShown[position].name
+        holder.type.text = placesShown[position].type
+        holder.starts.rating = (placesShown[position].rating.toDouble() / 10).toFloat()
 
         holder.layout.setOnClickListener {
-            placeClickListener.onPlaceClickListener(places[position])
+            placeClickListener.onPlaceClickListener(placesShown[position])
         }
     }
 }
