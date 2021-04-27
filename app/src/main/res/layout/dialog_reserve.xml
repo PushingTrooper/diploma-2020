@@ -85,7 +85,7 @@
                 android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textColor="@color/text_grey" />
 
         </com.google.android.material.textfield.TextInputLayout>

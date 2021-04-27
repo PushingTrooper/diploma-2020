@@ -17,4 +17,5 @@
     <color name="nav_background">#333333</color>
     <color name="mtrl_textinput_default_box_stroke_color">#F5D863</color>
     <color name="textInputLayout">#96ffffff</color>
+    <color name="dialog_blue">#2E78F0</color>
 </resources>

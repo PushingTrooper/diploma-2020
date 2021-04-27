@@ -1,11 +1,13 @@
 package com.example.diploma_2020.ui.home
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -15,6 +17,7 @@ import com.example.diploma_2020.data.TimeSchedule
 import com.example.diploma_2020.helpers.BASE_URL
 import com.example.diploma_2020.ui.ReserveDialog
 import org.koin.android.ext.android.inject
+
 
 class PlaceDetailsFragment : Fragment() {
     private val viewModel: HomeViewModel by inject()
@@ -30,7 +33,7 @@ class PlaceDetailsFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_place_details, container, false)
         val image: ImageView = root.findViewById(R.id.image)
-        val type: TextView = root.findViewById(R.id.type)
+        val typeTextView: TextView = root.findViewById(R.id.type)
         //val name: TextView = root.findViewById(R.id.name)
         val starts: RatingBar = root.findViewById(R.id.reviews)
         val address: TextView = root.findViewById(R.id.address)
@@ -55,7 +58,7 @@ class PlaceDetailsFragment : Fragment() {
 
         //name.text = place.name
         (activity as MainActivity).supportActionBar?.title = place.name
-        type.text = place.type
+        typeTextView.text = place.type
         starts.rating = (place.rating.toDouble()/10).toFloat()
         address.text = place.address
 
@@ -78,7 +81,17 @@ class PlaceDetailsFragment : Fragment() {
             val dialog = ReserveDialog(requireContext())
             dialog.show()
             dialog.reserve.setOnClickListener {
-                Toast.makeText(requireContext(), "ashdsa", Toast.LENGTH_SHORT).show()
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_EMAIL, "test@email.com")
+                    putExtra(Intent.EXTRA_EMAIL, arrayOf("test@email.com"))
+                    putExtra(Intent.EXTRA_TEXT, "Përshëndetje, dua të rezervoj një tavolinë për ${dialog.number.text.toString()} veta në emrin ${dialog.name.text.toString()} në datën ${dialog.dateText.text}")
+                    putExtra(Intent.EXTRA_SUBJECT, "Rezervim")
+                    type = "text/plain"
+                }
+
+                val shareIntent = Intent.createChooser(intent, null)
+                startActivity(shareIntent)
             }
         }
 
