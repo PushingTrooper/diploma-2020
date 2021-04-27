@@ -12,4 +12,6 @@ import retrofit2.Response
 
 class LoginViewModel(private val repo: Repository): ViewModel() {
     fun login(username: String, password: String) = repo.login(username, password)
+
+    fun register(email: String, username: String, password: String) = repo.register(email, username, password)
 }

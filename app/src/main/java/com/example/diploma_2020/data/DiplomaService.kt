@@ -18,4 +18,7 @@ interface DiplomaService {
 
     @GET("/login.php")
     fun login(@Query("email") email: String, @Query("password") password: String): Call<LoginResponse>
+
+    @GET("/insertUser.php")
+    fun register(@Query("email") email: String, @Query("username") username: String, @Query("password") password: String): Call<RegisterResponse>
 }

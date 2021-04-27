@@ -77,4 +77,6 @@ class Repository(private val context: Context, private val service: DiplomaServi
     }
 
     fun login(username: String, password: String) = service.login(username, password)
+
+    fun register(email: String, username: String, password: String) = service.register(email, username, password)
 }
