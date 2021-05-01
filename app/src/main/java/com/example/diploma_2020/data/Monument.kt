@@ -4,6 +4,6 @@ data class Monument(
     val address: Any,
     val description: String,
     val id: String,
-    val imageUrl: Any,
+    val imageUrl: String,
     val name: String
 )

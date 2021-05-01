@@ -36,7 +36,7 @@ class MonumentsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context)
-            .load("$BASE_URL${places[position].imageUrl}")
+            .load("$BASE_URL/${places[position].imageUrl}")
             .into(holder.image)
 
         holder.name.text = places[position].name

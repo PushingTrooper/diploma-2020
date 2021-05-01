@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/navigationFragment">
 
     <fragment
         android:id="@+id/nav_home"
@@ -25,7 +25,11 @@
         android:id="@+id/nav_slideshow"
         android:name="com.example.diploma_2020.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_placeDetailsFragment"
+            app:destination="@id/placeDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/placeDetailsFragment"
         android:name="com.example.diploma_2020.ui.home.PlaceDetailsFragment"
@@ -34,5 +38,20 @@
         <argument
             android:name="place"
             app:argType="com.example.diploma_2020.data.Place" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="com.example.diploma_2020.ui.NavigationFragment"
+        android:label="Zgjidh kategorinë"
+        tools:layout="@layout/fragment_navigation" >
+        <action
+            android:id="@+id/action_navigationFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_navigationFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+        <action
+            android:id="@+id/action_navigationFragment_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
     </fragment>
 </navigation>

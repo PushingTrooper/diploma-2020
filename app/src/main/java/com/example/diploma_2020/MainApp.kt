@@ -6,6 +6,7 @@ import com.example.diploma_2020.data.DiplomaServiceBuilder
 import com.example.diploma_2020.data.Repository
 import com.example.diploma_2020.ui.gallery.GalleryViewModel
 import com.example.diploma_2020.ui.home.HomeViewModel
+import com.example.diploma_2020.ui.slideshow.SlideshowViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,6 +18,7 @@ class MainApp : Application() {
     private fun homeModule(service: DiplomaService) = module {
         single { Repository(androidContext(), service) }
         single { HomeViewModel(get()) }
+        viewModel { SlideshowViewModel(get()) }
     }
 
     private fun galleryModule(service: DiplomaService) = module {
