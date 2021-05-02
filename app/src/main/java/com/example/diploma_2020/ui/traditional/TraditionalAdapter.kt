@@ -10,6 +10,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.diploma_2020.R
 import com.example.diploma_2020.data.Place
 import com.example.diploma_2020.helpers.BASE_URL
@@ -64,6 +67,12 @@ class TraditionalAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context)
             .load("$BASE_URL/${placesShown[position].imageUrl}")
+            .apply(
+                RequestOptions().transform(
+                    CenterCrop(),
+                    RoundedCorners(50)
+                )
+            )
             .into(holder.image)
 
         holder.name.text = placesShown[position].name

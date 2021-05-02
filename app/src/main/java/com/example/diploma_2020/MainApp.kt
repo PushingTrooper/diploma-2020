@@ -6,6 +6,7 @@ import com.example.diploma_2020.data.DiplomaServiceBuilder
 import com.example.diploma_2020.data.Repository
 import com.example.diploma_2020.ui.monuments.MonumentsViewModel
 import com.example.diploma_2020.ui.home.HomeViewModel
+import com.example.diploma_2020.ui.study_bars.StudyBarsViewModel
 import com.example.diploma_2020.ui.traditional.TraditionalViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,6 +20,7 @@ class MainApp : Application() {
         single { Repository(androidContext(), service) }
         single { HomeViewModel(get()) }
         viewModel { TraditionalViewModel(get()) }
+        viewModel { StudyBarsViewModel(get()) }
     }
 
     private fun galleryModule(service: DiplomaService) = module {

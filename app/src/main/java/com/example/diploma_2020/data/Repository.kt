@@ -15,6 +15,9 @@ class Repository(private val context: Context, private val service: DiplomaServi
     private val _traditional = MutableLiveData<List<Place>>()
     val traditional: LiveData<List<Place>> = _traditional
 
+    private val _studyBars = MutableLiveData<List<Place>>()
+    val studyBars: LiveData<List<Place>> = _studyBars
+
     private val _monuments = MutableLiveData<List<Monument>>()
     val monuments: LiveData<List<Monument>> = _monuments
 
@@ -23,6 +26,9 @@ class Repository(private val context: Context, private val service: DiplomaServi
 
     private val _traditionalTimeSchedule = MutableLiveData<TimeScheduleResponse>()
     val traditionalTimeSchedule: LiveData<TimeScheduleResponse> = _traditionalTimeSchedule
+
+    private val _studyBarsTimeSchedule = MutableLiveData<TimeScheduleResponse>()
+    val studyBarsTimeSchedule: LiveData<TimeScheduleResponse> = _studyBarsTimeSchedule
 
     fun getPlaces() {
         service.getPlaces().enqueue(object : Callback<PlacesResponse> {
@@ -57,6 +63,25 @@ class Repository(private val context: Context, private val service: DiplomaServi
                     _traditional.value = response.body()
                 } else {
                     _traditional.value = listOf()
+                }
+            }
+        })
+    }
+
+    fun getStudyBars() {
+        service.getStudyBars().enqueue(object : Callback<PlacesResponse> {
+            override fun onFailure(call: Call<PlacesResponse>, t: Throwable) {
+                _studyBars.value = listOf()
+            }
+
+            override fun onResponse(
+                call: Call<PlacesResponse>,
+                response: Response<PlacesResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _studyBars.value = response.body()
+                } else {
+                    _studyBars.value = listOf()
                 }
             }
         })
@@ -114,6 +139,25 @@ class Repository(private val context: Context, private val service: DiplomaServi
                     _traditionalTimeSchedule.value = response.body()
                 } else {
                     _traditionalTimeSchedule.value = TimeScheduleResponse(listOf(), context.getString(R.string.there_is_a_problem_with_the_connection))
+                }
+            }
+        })
+    }
+
+    fun getStudyBarsTimeSchedule(id: String) {
+        service.getTimeScheduleTraditional(id).enqueue(object : Callback<TimeScheduleResponse> {
+            override fun onFailure(call: Call<TimeScheduleResponse>, t: Throwable) {
+                _studyBarsTimeSchedule.value = TimeScheduleResponse(listOf(), context.getString(R.string.there_is_a_problem_with_the_connection))
+            }
+
+            override fun onResponse(
+                call: Call<TimeScheduleResponse>,
+                response: Response<TimeScheduleResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _studyBarsTimeSchedule.value = response.body()
+                } else {
+                    _studyBarsTimeSchedule.value = TimeScheduleResponse(listOf(), context.getString(R.string.there_is_a_problem_with_the_connection))
                 }
             }
         })

@@ -38,7 +38,7 @@ class NavigationFragment : Fragment() {
         }
 
         studyBars.setOnClickListener {
-            findNavController().navigate(R.id.action_navigationFragment_to_nav_home)
+            findNavController().navigate(R.id.action_navigationFragment_to_studyBarsFragment)
         }
 
         return root
