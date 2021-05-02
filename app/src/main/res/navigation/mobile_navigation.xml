@@ -17,18 +17,18 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.diploma_2020.ui.gallery.GalleryFragment"
+        android:name="com.example.diploma_2020.ui.monuments.MonumentsFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.diploma_2020.ui.slideshow.SlideshowFragment"
+        android:name="com.example.diploma_2020.ui.traditional.TraditionalFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" >
         <action
-            android:id="@+id/action_nav_slideshow_to_placeDetailsFragment"
-            app:destination="@id/placeDetailsFragment" />
+            android:id="@+id/action_nav_slideshow_to_traditionalDetailsFragment"
+            app:destination="@id/traditionalDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/placeDetailsFragment"
@@ -53,5 +53,13 @@
         <action
             android:id="@+id/action_navigationFragment_to_nav_slideshow"
             app:destination="@id/nav_slideshow" />
+    </fragment>
+    <fragment
+        android:id="@+id/traditionalDetailsFragment"
+        android:name="com.example.diploma_2020.ui.traditional.TraditionalDetailsFragment"
+        android:label="TraditionalDetailsFragment" >
+        <argument
+            android:name="place"
+            app:argType="com.example.diploma_2020.data.Place" />
     </fragment>
 </navigation>

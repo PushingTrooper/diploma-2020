@@ -1,4 +1,4 @@
-package com.example.diploma_2020.ui.slideshow
+package com.example.diploma_2020.ui.traditional
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import com.example.diploma_2020.data.Place
 import com.example.diploma_2020.data.Repository
 import com.example.diploma_2020.data.TimeScheduleResponse
 
-class SlideshowViewModel(private val repo: Repository) : ViewModel() {
+class TraditionalViewModel(private val repo: Repository) : ViewModel() {
     private val _places = MutableLiveData<List<Place>>()
     val places: LiveData<List<Place>> = _places
 

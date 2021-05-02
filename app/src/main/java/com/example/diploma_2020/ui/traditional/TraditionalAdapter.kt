@@ -1,4 +1,4 @@
-package com.example.diploma_2020.ui.slideshow
+package com.example.diploma_2020.ui.traditional
 
 import android.content.Context
 import android.view.LayoutInflater

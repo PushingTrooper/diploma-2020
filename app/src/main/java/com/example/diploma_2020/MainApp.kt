@@ -4,9 +4,9 @@ import android.app.Application
 import com.example.diploma_2020.data.DiplomaService
 import com.example.diploma_2020.data.DiplomaServiceBuilder
 import com.example.diploma_2020.data.Repository
-import com.example.diploma_2020.ui.gallery.GalleryViewModel
+import com.example.diploma_2020.ui.monuments.MonumentsViewModel
 import com.example.diploma_2020.ui.home.HomeViewModel
-import com.example.diploma_2020.ui.slideshow.SlideshowViewModel
+import com.example.diploma_2020.ui.traditional.TraditionalViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,11 +18,11 @@ class MainApp : Application() {
     private fun homeModule(service: DiplomaService) = module {
         single { Repository(androidContext(), service) }
         single { HomeViewModel(get()) }
-        viewModel { SlideshowViewModel(get()) }
+        viewModel { TraditionalViewModel(get()) }
     }
 
     private fun galleryModule(service: DiplomaService) = module {
-        single { GalleryViewModel(get()) }
+        single { MonumentsViewModel(get()) }
     }
 
     private val loginModule = module {

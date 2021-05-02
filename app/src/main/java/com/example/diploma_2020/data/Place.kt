@@ -10,5 +10,6 @@ data class Place(
     val imageUrl: String,
     val name: String,
     val rating: String,
-    val type: String
+    val type: String,
+    val description: String
 ): Parcelable
